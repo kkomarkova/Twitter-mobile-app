@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "720323027151",
+    "project_id": "authentication-twitter",
+    "storage_bucket": "authentication-twitter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720323027151:android:cbdaca256a5a14df14d7ba",
+        "android_client_info": {
+          "package_name": "com.example.twitter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720323027151-im0rq4u39e68rp24vjtpodrpvq35d560.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1d_P6Zy6_l7nDZm-nAxdGtWVeHj1vEDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720323027151-im0rq4u39e68rp24vjtpodrpvq35d560.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
