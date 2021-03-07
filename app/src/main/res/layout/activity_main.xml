@@ -1,61 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#1DA1F2">
 
-
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_margin="64dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="157dp" />
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="8dp"
+        android:background="#fff">
 
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="86dp"
-        tools:layout_editor_absoluteY="233dp" />
+        <LinearLayout
+            android:layout_width="271dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-    <Button
-        android:id="@+id/buttonlogin"
-        android:layout_width="124dp"
-        android:layout_height="55dp"
-        android:text="LOGIN"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="317dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/login_form_title"
+                android:textAlignment="center"
+                android:textSize="36sp" />
 
-    <TextView
-        android:id="@+id/textviewpassword"
-        android:layout_width="130dp"
-        android:layout_height="29dp"
-        android:text="Forgot Password?"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="394dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_form_email"
+                android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/textViewregister"
-        android:layout_width="130dp"
-        android:layout_height="29dp"
-        android:text="Register"
-        tools:layout_editor_absoluteX="246dp"
-        tools:layout_editor_absoluteY="394dp" />
+            <EditText
+                android:id="@+id/activity_main_emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="276dp"
-        android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_form_password"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/activity_main_passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/activity_main_loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/button"
+                android:text="@string/login_form_login"
+                android:onClick="login"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/activity_main_logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/button"
+                android:onClick="logout"
+                android:text="@string/login_form_logout"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/activity_main_buttonRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="register"
+                android:text="@string/login_form_register"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/textViewmessage"
+                android:layout_width="163dp"
+                android:layout_height="33dp"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
