@@ -27,6 +27,7 @@ import retrofit2.Response;
 
 public class Allmessages extends AppCompatActivity {
     private static final String LOG_TAG = "MYMESSAGES";
+
     private TextView messageView;
     private ProgressBar progressBar;
 
