@@ -54,7 +54,7 @@ public class Addnewmessage extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Message theNewMessage = response.body();
                     Log.d(LOG_TAG, theNewMessage.toString());
-                    Toast.makeText(Addnewmessage.this, "Book added, id: " + theNewMessage.getId(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Addnewmessage.this, "Message added, id: " + theNewMessage.getId(), Toast.LENGTH_SHORT).show();
 //                    Snackbar.make(view, "Book added, id: " + theNewBook.getId(), Snackbar.LENGTH_LONG).show();
                 } else {
                     String problem = "Problem: " + response.code() + " " + response.message();
