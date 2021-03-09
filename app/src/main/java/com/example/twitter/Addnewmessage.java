@@ -1,12 +1,15 @@
 package com.example.twitter;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import retrofit2.Call;
@@ -17,6 +20,8 @@ public class Addnewmessage extends AppCompatActivity {
     private static final String LOG_TAG = "MYMESSAGES";
     private ProgressBar progressBar;
     private TextView messageView;
+    private EditText insertideditText;
+    private Button buttonDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,57 @@ public class Addnewmessage extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_message);
         progressBar = findViewById(R.id.addMessageProgressbar);
         messageView = findViewById(R.id.addMessageMessageTextView);
+        initView();
+    }
+    private void initView() {
+        insertideditText = findViewById(R.id.insertideditText);
+        buttonDelete = findViewById(R.id.buttonDelete);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buttonDelete_onClick(view);
+            }
+        });
+    }
+    private void buttonDelete_onClick(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setTitle("CONFIRM");
+        builder.setMessage("ARE YOU SURE?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int id = Integer.parseInt(insertideditText.getText().toString());
+                MessageService messageService = ApiUtils.getMessageService();
+
+                messageService.deleteMessage(id).enqueue(new Callback<Message>() {
+                    @Override
+                    public void onResponse(Call<Message> call, Response<Message> response) {
+                        try {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(Addnewmessage.this,"Deleted", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), response.errorBody().string(), Toast.LENGTH_LONG).show();
+                            }
+                        } catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Message> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
+                });
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
     }
 
     public void addMessageButtonClicked(View view) {
@@ -73,4 +129,5 @@ public class Addnewmessage extends AppCompatActivity {
             }
         });
     }
+
 }
