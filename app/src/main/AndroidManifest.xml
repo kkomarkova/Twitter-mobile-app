@@ -11,24 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Twitter">
+        <activity android:name=".Go"></activity>
         <activity
             android:name=".Allmessages"
             android:label="@string/title_activity_allmessages"
-            android:theme="@style/Theme.Twitter.NoActionBar"></activity>
+            android:theme="@style/Theme.Twitter.NoActionBar" />
         <activity
             android:name=".Addnewmessage"
             android:label="@string/title_activity_addnewmessage"
-            android:theme="@style/Theme.Twitter.ActionBar"
-            ></activity>
+            android:theme="@style/Theme.Twitter.ActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="example.com"
-                    android:scheme="https"/>
+                    android:scheme="https" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
