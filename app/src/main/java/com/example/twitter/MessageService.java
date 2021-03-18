@@ -15,7 +15,8 @@ import retrofit2.http.Path;
 public interface MessageService {
     @GET("messages")
     Call<List<Message>> getAllMessages();
-
+    @GET("messages?user=katerina")
+    Call<List<Message>> getMessagesbyuser();
     @GET("messages/{messageId}")
     Call<Message> getMessageById(@Path("id") int messageId);
 
