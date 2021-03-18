@@ -1,7 +1,7 @@
 package com.example.twitter;
 
 public class ApiUtils {
-    
+
     private ApiUtils() {
     }
 
@@ -9,5 +9,9 @@ public class ApiUtils {
 
     public static MessageService getMessageService() {
         return RetrofitClient.getClient(BASE_URL).create(MessageService.class);
+    }
+
+    public static CommentService getCommentService() {
+        return RetrofitClient.getClient(BASE_URL).create(CommentService.class);
     }
 }
