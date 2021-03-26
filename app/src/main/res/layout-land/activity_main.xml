@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1DA1F2"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="356dp"
+        android:layout_margin="64dp"
+        android:background="#fff"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="640dp"
+            android:layout_height="524dp"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/login_form_title"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_form_email"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/activity_main_emailEditText"
+                android:layout_width="561dp"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_form_password"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/activity_main_passwordEditText"
+                android:layout_width="558dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/activity_main_loginButton"
+                android:layout_width="558dp"
+                android:layout_height="wrap_content"
+                android:background="@color/button"
+                android:onClick="login"
+                android:text="@string/login_form_login"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/activity_main_logoutButton"
+                android:layout_width="558dp"
+                android:layout_height="wrap_content"
+                android:background="@color/button"
+                android:onClick="logout"
+                android:text="@string/login_form_logout"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/activity_main_buttonRegister"
+                android:layout_width="558dp"
+                android:layout_height="wrap_content"
+                android:onClick="register"
+                android:text="@string/login_form_register"
+                android:textSize="22sp"
+                card_view:iconPadding="8dp" />
+
+            <TextView
+                android:id="@+id/textViewmessage"
+                android:layout_width="163dp"
+                android:layout_height="33dp"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
