@@ -1,5 +1,6 @@
 package com.example.twitter;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +33,17 @@ public class Addnewmessage extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_message);
         progressBar = findViewById(R.id.addMessageProgressbar);
         messageView = findViewById(R.id.addMessageMessageTextView);
+        FloatingActionButton fab = findViewById(R.id.user);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //          .setAction("Action", null).show();
+                //Add intent to add new Message
+                Intent intent = new Intent(Addnewmessage.this, Messagebyuser.class);
+                startActivity(intent);
+            }
+        });
         initView();
     }
     private void initView() {
@@ -38,11 +52,11 @@ public class Addnewmessage extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonDelete_onClick(view);
+                buttonDelete(view);
             }
         });
     }
-    private void buttonDelete_onClick(View view) {
+    private void buttonDelete(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setTitle("CONFIRM");
         builder.setMessage("ARE YOU SURE?");
