@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class Message implements Serializable
+public class Message implements Serializable
 {
 
     @SerializedName("id")
@@ -20,7 +20,10 @@ class Message implements Serializable
     @SerializedName("totalComments")
     @Expose
     private Integer totalComments;
+    public Message() {
 
+
+    }
   public Message(Integer id, String content, String user, Integer totalComments){
       this.id = id;
       this.content = content;
