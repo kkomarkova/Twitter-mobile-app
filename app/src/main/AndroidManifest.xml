@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Twitter">
-        <activity android:name=".Go"></activity>
+        <activity
+            android:name=".Messagebyuser"
+            android:label="@string/title_activity_messagebyuser"
+            android:theme="@style/Theme.Twitter.NoActionBar" />
         <activity
             android:name=".Allmessages"
             android:label="@string/title_activity_allmessages"
@@ -20,6 +23,10 @@
             android:name=".Addnewmessage"
             android:label="@string/title_activity_addnewmessage"
             android:theme="@style/Theme.Twitter.ActionBar" />
+        <activity
+            android:name=".CommentActivity"
+            android:label="Comment"
+            android:theme="@style/Theme.Twitter.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
