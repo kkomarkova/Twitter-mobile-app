@@ -15,6 +15,10 @@ import retrofit2.http.Path;
 public interface MessageService {
     @GET("messages")
     Call<List<Message>> getAllMessages();
+    @GET("messages/{messageId}/comments")
+    Call<List<Comment>>getCommentById(@Path("messageId") int messageId);
+    @POST("messages/{messageId}/comments")
+    Call<Comment>saveCommentBody(@Path("messageId")int messageId, @Body Comment comment);
     @GET("messages?user=katerina")
     Call<List<Message>> getMessagesbyuser();
     @GET("messages/{messageId}")
@@ -32,6 +36,11 @@ public interface MessageService {
     @DELETE("messages/{id}")
     Call<Message> deleteMessage(@Path("id") int id);
 
+    @DELETE("messages/{messageId}/comments/{commentId}")
+    Call<Comment> deleteComment(@Path("messageId") int messageId, @Path("commentId") int commentId);
+
     @PUT("messages/{id}")
     Call<Message> updateMessage(@Path("id") int id, @Body Message message);
+
+
 }
