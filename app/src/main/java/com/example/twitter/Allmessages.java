@@ -48,7 +48,9 @@ public class Allmessages extends AppCompatActivity {
                 //   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //          .setAction("Action", null).show();
                 //Add intent to add new Message
+
                 Intent intent = new Intent(Allmessages.this, Addnewmessage.class);
+
                 startActivity(intent);
             }
         });
@@ -58,11 +60,11 @@ public class Allmessages extends AppCompatActivity {
             refreshLayout.setRefreshing(false);
         });
     }
-        @Override
-        protected void onStart() {
-            super.onStart();
-            getAndShowAllMessages();
-        }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getAndShowAllMessages();
+    }
     private void getAndShowAllMessages() {
         MessageService bookStoreService = ApiUtils.getMessageService();
         Call<List<Message>> getAllMessagesCall = bookStoreService.getAllMessages();
@@ -103,15 +105,17 @@ public class Allmessages extends AppCompatActivity {
     private void populateRecyclerView(List<Message> allMessages) {
         RecyclerView recyclerView = findViewById(R.id.mainRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerViewSimpleAdapter<Message> adapter = new RecyclerViewSimpleAdapter<>(allMessages);
+        RecyclerViewMessageAdapter adapter = new RecyclerViewMessageAdapter(this, allMessages);
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener((view, position, item) -> {
+
+        adapter.setClickListener((view, position, item) -> {
             Message message = (Message) item;
             Log.d(LOG_TAG, item.toString());
-            Intent intent = new Intent(Allmessages.this, SingleMessageActivity.class);
-            intent.putExtra(SingleMessageActivity.MESSAGE, message);
             Log.d(LOG_TAG, "putExtra " + message.toString());
+            Intent intent = new Intent(this, CommentActivity.class);
+            intent.putExtra(CommentActivity.MESSAGE, message);
             startActivity(intent);
+
         });
     }
     @Override
