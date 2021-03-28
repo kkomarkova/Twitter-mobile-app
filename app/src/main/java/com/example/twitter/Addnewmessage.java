@@ -44,7 +44,7 @@ public class Addnewmessage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        initView();
+       /* initView();
     }
     private void initView() {
         insertideditText = findViewById(R.id.insertideditText);
@@ -94,10 +94,10 @@ public class Addnewmessage extends AppCompatActivity {
                 dialogInterface.dismiss();
             }
         });
-        builder.show();
+        builder.show();*/
     }
 
-    public void addMessageButtonClicked(View view) {
+    public void addMessageClicked(View view) {
        // EditText idField = findViewById(R.id.addMessageIdEditText);
         EditText contentField = findViewById(R.id.addMessageContentEditText);
         EditText userField = findViewById(R.id.addMessageUserEditText);
