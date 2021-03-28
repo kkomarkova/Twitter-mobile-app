@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "720323027151",
-    "project_id": "authentication-twitter",
-    "storage_bucket": "authentication-twitter.appspot.com"
+    "project_number": "358114124382",
+    "project_id": "authentication-twister",
+    "storage_bucket": "authentication-twister.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:720323027151:android:cbdaca256a5a14df14d7ba",
+        "mobilesdk_app_id": "1:358114124382:android:716b55f16901c38b3f8acf",
         "android_client_info": {
           "package_name": "com.example.twitter"
         }
       },
       "oauth_client": [
         {
-          "client_id": "720323027151-im0rq4u39e68rp24vjtpodrpvq35d560.apps.googleusercontent.com",
+          "client_id": "358114124382-dj85q7mivaokplfeolgrnhsv2g558tep.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA1d_P6Zy6_l7nDZm-nAxdGtWVeHj1vEDE"
+          "current_key": "AIzaSyBAK0-l8PUf32hC-A3XDwVj2sH7kU-6uN8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "720323027151-im0rq4u39e68rp24vjtpodrpvq35d560.apps.googleusercontent.com",
+              "client_id": "358114124382-dj85q7mivaokplfeolgrnhsv2g558tep.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
