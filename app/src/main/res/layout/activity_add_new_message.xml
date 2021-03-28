@@ -7,8 +7,69 @@
     android:orientation="vertical"
     tools:context=".Addnewmessage">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <TextView
+        <TextView
+            android:id="@+id/labelforMessageContentTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="Content" />
+
+        <EditText
+            android:id="@+id/addMessageContentEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:inputType="textCapSentences" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="User" />
+
+        <EditText
+            android:id="@+id/addMessageUserEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:inputType="text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonadd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="addMessageClicked"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="Add" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:text="Cancel"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
+
+  <!--  <TextView
         android:id="@+id/labelforMessageContentTextView"
         android:layout_width="299dp"
         android:layout_height="wrap_content"
@@ -37,11 +98,7 @@
         android:onClick="addMessageButtonClicked"
         android:text="Add" />
 
-    <TextView
-        android:id="@+id/addMessageMessageTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
+   <&#45;&#45; <TextView
         android:id="@+id/labelforinsertidTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +120,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="buttonDelete"
-        android:text="@string/delete" />
+        android:text="@string/delete" />&ndash;&gt;-->
+    <TextView
+    android:id="@+id/addMessageMessageTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 
     <ProgressBar
         android:id="@+id/addMessageProgressbar"
