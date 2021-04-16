@@ -44,6 +44,7 @@ public class CommentActivity extends AppCompatActivity implements
     private Comment theComment;
     private ImageButton imageButton;
     public static final String Email = "user";
+    private static final String TAG = "Gestures";
     FirebaseAuth fAuth;
     public static final String MESSAGE = "message";
     RecyclerViewCommentAdapter adapter;
@@ -54,6 +55,7 @@ public class CommentActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
+        mDetector= new GestureDetector(this,this);
 
         Intent intent = getIntent();
         theMessage = (Message) intent.getSerializableExtra(MESSAGE);
