@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
+        /*if (user != null) {
             // User is signed in
             Intent i = new Intent(MainActivity.this, Allmessages.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // User is signed out
             Log.d(TAG, "onAuthStateChanged:signed_out");
-        }
+        }*/
     }
 
     @Override

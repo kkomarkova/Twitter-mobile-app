@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface MessageService {
     @GET("messages")
@@ -23,6 +24,8 @@ public interface MessageService {
     Call<List<Message>> getMessagesbyuser();
     @GET("messages/{messageId}")
     Call<Message> getMessageById(@Path("id") int messageId);
+    @GET("messages")
+    Call<List<Message>>getMessagesByUser(@Query("user") String user);
 
    // @POST("books")
   //  @FormUrlEncoded

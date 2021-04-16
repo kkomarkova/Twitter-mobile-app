@@ -10,7 +10,7 @@
     android:layout_marginBottom="@dimen/loginViewsMargin"
     android:background="@color/whiteCardColor"
 
-    tools:context=".MainActivityk">
+    tools:context=".MainActivity">
 
         <LinearLayout
             style="@style/linearParent"

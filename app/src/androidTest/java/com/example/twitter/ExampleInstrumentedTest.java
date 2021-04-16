@@ -1,7 +1,8 @@
 package com.example.twitter;
 
+import androidx.test.core.app.ActivityScenario;
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.rule.ActivityTestRule;
 
 
 import org.junit.Rule;
@@ -29,8 +30,8 @@ public void useAppContext() {
  assertEquals("com.example.twitter", appContext.getPackageName());*/
 }
 @Rule
-public ActivityTestRule<MainActivityk> mActivityRule =
-        new ActivityTestRule(MainActivityk.class);
+public ActivityScenarioRule rule =
+        new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
     public void testItAll() {
@@ -39,15 +40,15 @@ public ActivityTestRule<MainActivityk> mActivityRule =
         // an assertion: .check(matches(isDisplayed()))
         //3.Use a ViewAction to perform an action: .perform(click())
 
-        onView(withText("Twitter Login")).check(matches(isDisplayed()));
+        onView(withText("Twister App")).check(matches(isDisplayed()));
         //TextView contains
-        onView(withId(R.id.activity_main_passwordTextView)).check(matches(withText("Password")));
-        onView(withId(R.id.activity_main_emailTextView)).check(matches(withText("Email")));
+        //onView(withId(R.id.activity_main_passwordEditText)).check(matches(withText("Password")));
+        //onView(withId(R.id.activity_main_emailEditText)).check(matches(withText("Email")));
         //Edittext input 
         //Button action
-        /*onView(withId(R.id.activity_main_loginButton)).perform(click());
+        onView(withId(R.id.activity_main_loginButton)).perform(click());
         onView(withId(R.id.activity_main_logoutButton)).perform(click());
-        onView(withId(R.id.activity_main_buttonRegister)).perform(click());*/
+        //onView(withId(R.id.activity_main_buttonRegister)).perform(click());
 
 
     }

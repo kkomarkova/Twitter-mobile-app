@@ -191,13 +191,16 @@ public class Allmessages extends AppCompatActivity implements GestureDetector.On
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_menu1) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_menu1:
+                Intent intent = new Intent(this, ProfileActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_menu2:
+                Intent intent1 = new Intent(this, MainActivity.class);
+                startActivity(intent1);
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
