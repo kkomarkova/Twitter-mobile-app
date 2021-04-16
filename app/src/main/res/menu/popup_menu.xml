@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/popupAdd"
+
         android:title="Add comment"
+        android:typeface="monospace"
+        android:textColor="#969696"
         app:showAsAction="always"
         >
     </item>
     <item
         android:id="@+id/popupDelete"
+
         android:title="Delete message"
+        android:typeface="monospace"
+        android:textColor="#969696"
 
         app:showAsAction="always">
     </item>

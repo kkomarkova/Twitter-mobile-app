@@ -33,17 +33,7 @@ public class Addnewmessage extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_message);
         progressBar = findViewById(R.id.addMessageProgressbar);
         messageView = findViewById(R.id.addMessageMessageTextView);
-        FloatingActionButton fab = findViewById(R.id.user);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                //          .setAction("Action", null).show();
-                //Add intent to add new Message
-                Intent intent = new Intent(Addnewmessage.this, Messagebyuser.class);
-                startActivity(intent);
-            }
-        });
+
        /* initView();
     }
     private void initView() {

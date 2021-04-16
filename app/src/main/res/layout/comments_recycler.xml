@@ -12,9 +12,12 @@
         android:paddingBottom="10dp">
         <TextView
             android:layout_width="match_parent"
+            style="@style/recyclerviewcontent"
+            android:textStyle=""
             android:layout_height="wrap_content"
             android:id="@+id/recyclerCommentUser"
             android:text="TextView"
+            android:typeface="monospace"
             android:textColor="@color/black"
             android:textSize="14dp"
             android:textAppearance="?android:attr/textAppearanceMedium"

@@ -2,14 +2,16 @@ package com.example.twitter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.view.GestureDetector;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -28,7 +31,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CommentActivity extends AppCompatActivity implements View.OnClickListener
+public class CommentActivity extends AppCompatActivity implements
+        View.OnClickListener,
+        GestureDetector.OnGestureListener
+
+
         // implements PopupMenu.OnMenuItemClickListener
 {
     private TextView message;
@@ -41,7 +48,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     public static final String MESSAGE = "message";
     RecyclerViewCommentAdapter adapter;
     private Layout layout;
-
+    private GestureDetector mDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +57,6 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
 
         Intent intent = getIntent();
         theMessage = (Message) intent.getSerializableExtra(MESSAGE);
-
         message = findViewById(R.id.commentOriginalMessage);
         message.setText(theMessage.getContent() + "");
 
@@ -229,41 +235,100 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
         int messageId = theMessage.getId();
         Log.d("delete", "the message id is: " + messageId);
         String CommentUser = theComment.getUser();
-        Log.d("delete", "the comment user is: " + CommentUser);
+        Log.d("delete", "the message id is: " + messageId);
         fAuth = FirebaseAuth.getInstance();
-        String user = fAuth.getCurrentUser().getEmail();
-        Log.d("delete", "the one deleting: " + user);
+        FirebaseUser userfb = fAuth.getCurrentUser();
+        //String user = fAuth.getCurrentUser().getEmail();
+        Log.d("delete","the message is deleted");
+        if (userfb == null) {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.NotSignedIn), Toast.LENGTH_SHORT).show();
+        } else {
+            String user = fAuth.getCurrentUser().getEmail();
+            Log.d("delete", "the one deleting: " + user);
+            Call<Comment> deleteCommentCall = services.deleteComment(messageId, adapter.getItem(position).getId());
+            if (CommentUser.equals(user)) {
+                deleteCommentCall.enqueue(new Callback<Comment>() {
+                    @Override
+                    public void onResponse(Call<Comment> call, Response<Comment> response) {
 
-        Call<Comment> deleteCommentCall = services.deleteComment(adapter.getItem(position).getId(), messageId);
-
-        if (CommentUser.equals(user)) {
-            deleteCommentCall.enqueue(new Callback<Comment>() {
-                @Override
-                public void onResponse(Call<Comment> call, Response<Comment> response) {
-
-                    if (response.isSuccessful()) {
-                        String message =  ""  +theMessage.getId();
-                        Toast.makeText(getBaseContext(), "Comment is deleted: ", Toast.LENGTH_SHORT).show();
-                        Log.d("delete", "the message id is " + message);
-                        recreate();
-                    } else {
-                        String problem = call.request().url() + "\n" + response.code() + " " + response.message();
-                        Toast.makeText(getBaseContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                        Log.e("delete", "the problem is: " + problem);
+                        if (response.isSuccessful()) {
+                            String message = "" + theMessage.getId();
+                            Toast.makeText(getBaseContext(), "Comment is deleted: ", Toast.LENGTH_SHORT).show();
+                            Log.d("delete", "the message id is " + message);
+                            recreate();
+                        } else {
+                            String problem = call.request().url() + "\n" + response.code() + " " + response.message();
+                            Toast.makeText(getBaseContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                            Log.e("delete", "the problem is: " + problem);
+                        }
                     }
-                }
-                @Override
-                public void onFailure(Call<Comment> call, Throwable t) {
-                    //Snackbar.make(view, "Problem: " + t.getMessage(), Snackbar.LENGTH_LONG).show();
-                    Toast.makeText(getBaseContext(), "Something went wrong" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e("delete", "Problem: " + t.getMessage());
-                }
-            });
+
+                    @Override
+                    public void onFailure(Call<Comment> call, Throwable t) {
+                        //Snackbar.make(view, "Problem: " + t.getMessage(), Snackbar.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.Wrong) + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("delete", "Problem: " + t.getMessage());
+                    }
+                });
+            } else
+                Toast.makeText(getBaseContext(), "you can only delete your own comment", Toast.LENGTH_SHORT).show();
         }
-        else
-            Toast.makeText(getBaseContext(), "you can only delete your own comment", Toast.LENGTH_SHORT).show();
     }
 
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        return mDetector.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        Log.d("gesture", "onDown");
+        return true;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+        Log.d("gesture", "onShowPress");
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        Log.d("gesture", "onSingleTapUp");
+        return true;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        Log.d("gesture", "onScroll");
+        return true;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent)
+    {
+        Log.d("gesture", "onLongPress");
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent me1, MotionEvent me2, float v1, float v2) {
+        //Toast.makeText(this, "onFling", Toast.LENGTH_SHORT).show();
+        Log.d("gesture", "onFling " + me1.toString() + "::::" + me2.toString());
+
+        boolean leftSwipe = me1.getX() > me2.getX();
+        //boolean rightSwipe = me1.getY() < me2.getY();
+        Log.d("gesture", "onFling left: " + leftSwipe);
+        if (leftSwipe) {
+            Intent intent = new Intent(this, Allmessages.class);
+            startActivity(intent);
+            //ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+            //Bundle options = activityOptionsCompat.toBundle();
+            //startActivity(intent, options);
+        }
+
+        return true; // done
+    }
 
     @Override
     public void onClick(View view) {

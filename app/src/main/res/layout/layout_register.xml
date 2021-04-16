@@ -10,7 +10,7 @@
     android:layout_marginBottom="@dimen/loginViewsMargin"
     android:background="@color/whiteCardColor"
 
-    tools:context=".MainActivity">
+    tools:context=".MainActivityk">
 
         <LinearLayout
             style="@style/linearParent"
@@ -19,7 +19,8 @@
 
             <TextView
                 style="@style/headerTextPrimary"
-                android:text="Please sign in"
+                android:text="SIGN IN"
+                android:typeface="monospace"
                 android:layout_marginTop="@dimen/loginViewsMargin"/>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -28,6 +29,7 @@
                 <EditText
                     android:id="@+id/activity_main_emailEditText"
                     style="@style/modifiedEditText"
+                    android:typeface="monospace"
                     android:inputType="text"
                     android:maxLines="1"
                     android:hint="Email"/>
@@ -39,6 +41,7 @@
                 <EditText
                     android:id="@+id/activity_main_passwordEditText"
                     style="@style/modifiedEditText"
+                    android:typeface="monospace"
                     android:hint="Password"
                     android:maxLines="1"
                     android:inputType="textPassword"/>
@@ -46,7 +49,8 @@
             <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp">
 
                 <Button
                     android:id="@+id/activity_main_loginButton"
@@ -56,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:onClick="login"
+                    android:typeface="monospace"
                     android:text="LOG IN" />
             </RelativeLayout>
                 <RelativeLayout
@@ -72,6 +77,7 @@
                     android:layout_gravity="center"
 
                     android:onClick="logout"
+                    android:typeface="monospace"
                     android:text="LOG OUT" />
             </RelativeLayout>
     <RelativeLayout
@@ -87,6 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="register"
+            android:typeface="monospace"
             android:text="REGISTER" />
     </RelativeLayout>
 

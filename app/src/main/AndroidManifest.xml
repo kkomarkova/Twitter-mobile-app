@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,11 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Twitter">
-        <activity
-            android:name=".Messagebyuser"
-            android:label="@string/title_activity_messagebyuser"
-            android:theme="@style/Theme.Twitter.NoActionBar" />
+        android:theme="@style/Theme.Twitter.NoActionBar">
+
         <activity
             android:name=".Allmessages"
             android:label="@string/title_activity_allmessages"
@@ -29,19 +26,16 @@
             android:name=".CommentActivity"
             android:label="Comment"
             android:theme="@style/Theme.Twitter.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivityk">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
                     android:host="example.com"
                     android:scheme="https" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
