@@ -39,19 +39,20 @@ public ActivityScenarioRule rule =
         //2.We are using ViewAssertion  to check if the result of the action matches
         // an assertion: .check(matches(isDisplayed()))
         //3.Use a ViewAction to perform an action: .perform(click())
-
+        //See if there is text Twister App in the app
         onView(withText("Twister App")).check(matches(isDisplayed()));
         //TextView contains
         //onView(withId(R.id.activity_main_passwordEditText)).check(matches(withText("Password")));
         //onView(withId(R.id.activity_main_emailEditText)).check(matches(withText("Email")));
-        //Edittext input 
-        //Button action
+
+        //Test the EditText main
+        
+        //Button action test if they work on click
         onView(withId(R.id.activity_main_loginButton)).perform(click());
         onView(withId(R.id.activity_main_logoutButton)).perform(click());
-        //onView(withId(R.id.activity_main_buttonRegister)).perform(click());
-
 
     }
+
 
 
 
