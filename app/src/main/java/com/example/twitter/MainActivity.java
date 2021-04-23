@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         String password = passwordView.getText().toString().trim();
 
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "All fields must be filled", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"All fields must be filled", Toast.LENGTH_LONG).show();
         } else {
 
             mAuth.signInWithEmailAndPassword(email, password)
@@ -125,4 +125,5 @@ public class MainActivity extends AppCompatActivity {
         TextView messageView = findViewById(R.id.textViewmessage);
         messageView.setText("You are signed out");
     }
+
 }

@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -13,10 +14,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
+import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -73,5 +77,10 @@ public ActivityScenarioRule rule =
     @Test
     public void validateEditTextPassword() {
         onView(withId(R.id.activity_main_passwordEditText)).perform(typeText("Password")).check(matches(withText("Password")));
+    }
+    @Test
+    public void testElementusable() {
+        onView(withId(R.id.activity_main_passwordEditText)).check(matches(isCompletelyDisplayed()));
+        onView(withId(R.id.activity_main_emailEditText)).check(matches(isCompletelyDisplayed()));
     }
 }
